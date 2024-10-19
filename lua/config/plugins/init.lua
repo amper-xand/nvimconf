@@ -9,6 +9,7 @@ return {
     require "config.plugins.pretty.colorswatch",
     require "config.plugins.pretty.markview",
     require "config.plugins.pretty.todo-comment",
+    require "config.plugins.pretty.indent",
 
     require "config.plugins.utils.autopairs",
     require "config.plugins.utils.neotree",
