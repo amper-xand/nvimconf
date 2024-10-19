@@ -30,6 +30,6 @@ vim.cmd([[highlight NonText ctermbg=none]])
 vim.g.netrw_banner    = 0
 vim.g.netrw_liststyle = 3
 
-vim.opt.updatetime    = 1000
+vim.opt.updatetime    = 100
 
 -- vim.cmd [[autocmd WinNew * wincmd L]]

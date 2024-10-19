@@ -13,6 +13,7 @@ return {
     require "config.plugins.utils.autopairs",
     require "config.plugins.utils.neotree",
     require "config.plugins.utils.telescope",
+    require "config.plugins.utils.gitgutter",
 
     require "config.plugins.other.vimtex",
     require "config.plugins.other.trouble",
