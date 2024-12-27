@@ -44,3 +44,4 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 })
 
 require("config.keys.lsp")
+require("config.keys.romanization")
