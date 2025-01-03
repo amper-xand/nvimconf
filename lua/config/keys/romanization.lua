@@ -1,3 +1,6 @@
+-- set key maps to type in non latín scripts with latín keyboard
+-- ex: privyet -> привет
+
 local russian_alphabet = {
     { letter = "А", romanization = "A" },
     { letter = "Б", romanization = "B" },

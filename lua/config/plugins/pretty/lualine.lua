@@ -3,6 +3,7 @@ return {
     init = function()
         local wpm = require("wpm") -- Not Maintained
         wpm.setup()
+
         require('lualine').setup({
             tabline = {
                 lualine_a = { 'filename' },
