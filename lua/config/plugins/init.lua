@@ -4,12 +4,9 @@ return {
     require "config.plugins.autocompletion.lazydev",
 
     require "config.plugins.pretty.lualine",
-    require "config.plugins.pretty.borrowed",
+    require "config.plugins.pretty.idkhow",
     require "config.plugins.pretty.treesitter",
-    require "config.plugins.pretty.colorswatch",
-    require "config.plugins.pretty.markview",
-    require "config.plugins.pretty.todo-comment",
-    require "config.plugins.pretty.indent",
+    require "config.plugins.pretty.misc",
 
     require "config.plugins.utils.autopairs",
     require "config.plugins.utils.neotree",

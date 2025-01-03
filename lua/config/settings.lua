@@ -1,7 +1,7 @@
 vim.opt.splitright = true
 
 vim.keymap.set('n', '<F5>', ':setlocal spell!<CR>', { silent = true })
-vim.opt.spelllang = "en_us,es"
+vim.opt.spelllang = "en_us,es,ru"
 
 vim.cmd "set number relativenumber" -- vim.opt.relativenumber = true
 vim.opt.cursorline    = true
@@ -22,14 +22,16 @@ vim.opt.foldlevel     = 99
 
 vim.opt.pumheight     = 10
 vim.opt.pumwidth      = 12
--- vim.opt.pumblend = 10
-
-vim.cmd([[highlight Normal ctermbg=none]])
-vim.cmd([[highlight NonText ctermbg=none]])
 
 vim.g.netrw_banner    = 0
 vim.g.netrw_liststyle = 3
 
 vim.opt.updatetime    = 100
 
--- vim.cmd [[autocmd WinNew * wincmd L]]
+local on_yank = function() pcall(vim.highlight.on_yank) end
+vim.api.nvim_create_autocmd("TextYankPost", { callback = on_yank })
+
+-- just in case I switch to a theme that does not support this
+vim.api.nvim_set_hl(0, "LspReferenceText", { underline = true, bg = "BLACK" })
+vim.api.nvim_set_hl(0, "LspReferenceRead", { underline = true, bg = "BLACK" })
+vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, bg = "BLACK" })

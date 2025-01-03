@@ -12,8 +12,6 @@ return {
                 }
             )
 
-        vim.lsp.inlay_hint.enable(true)
-
         local lspconfig = require('lspconfig')
         -- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -24,16 +22,17 @@ return {
 
         lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
+        lspconfig.lua_ls.setup { capabilities = lsp_capabilities }
+
         lspconfig.clangd.setup { capabilities = lsp_capabilities, compilationDatabasePath = './', cmd = { "clangd", "--clang-tidy" } }
         lspconfig.cmake.setup { capabilities = lsp_capabilities }
-        lspconfig.pyright.setup { capabilities = lsp_capabilities }
+
         lspconfig.texlab.setup { capabilities = lsp_capabilities }
         lspconfig.typos_lsp.setup { filetypes = "tex", init_options = { diagnosticSeverity = "Hint" } }
 
         lspconfig.gopls.setup { capabilities = lsp_capabilities }
         lspconfig.html.setup { capabilities = lsp_capabilities }
         lspconfig.cssls.setup { capabilities = lsp_capabilities }
-        lspconfig.lua_ls.setup { capabilities = lsp_capabilities }
 
         lspconfig.pyright.setup { capabilities = lsp_capabilities }
     end
