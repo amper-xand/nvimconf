@@ -43,8 +43,7 @@ return {
                         end
 
                         if not cmp.confirm({ select = true }) then
-                            vim.api.nvim_feedkeys
-                            ('\r', 'n', false)
+                            vim.api.nvim_feedkeys('\r', 'n', false)
                             return
                         end
 
