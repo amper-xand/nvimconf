@@ -7,6 +7,10 @@ return {
         vim.g.vimtex_view_general_viewer = '/mnt/c/Users/andres/AppData/Local/SumatraPDF/SumatraPDF.exe'
         vim.g.vimtex_view_general_options = '@pdf'
 
+        vim.g.vimtex_compiler_latexmk = {
+            aux_dir = './build'
+        }
+
         vim.g.vimtex_mappings_enabled = 1
 
         --vim.g.tex_fast = ""
