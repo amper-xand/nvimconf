@@ -1,74 +1,49 @@
 return {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    config = function()
-        local cmp = require 'cmp'
+    {
+        'saghen/blink.compat',
+        -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
+        version = '*',
+        -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+        lazy = true,
+        -- make sure to set opts so that lazy.nvim calls blink.compat's setup
 
-        vim.opt.completeopt = "menu,menuone,noselect"
+        impersonate_nvim_cmp = false,
+        opts = {},
+    },
 
-        vim.cmd [[
-        " Jump forward or backward
-        imap <expr> <Tab>   vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-        smap <expr> <Tab>   vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-        imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-        smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-        ]]
+    {
+        'saghen/blink.cmp',
+        version = '*',
+        event = "InsertEnter",
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
+        opts = {
 
-        cmp.setup({
-            ---@diagnostic disable-next-line: missing-fields
-            formatting = {
-                format = require('lspkind').cmp_format(),
+            keymap = {
+                preset = 'default',
+
+                ['<C-l>'] = { 'accept', 'fallback' },
+                ['<C-k>'] = { 'select_prev', 'fallback' },
+                ['<C-j>'] = { 'select_next', 'fallback' },
+
             },
 
-            snippet = {
-                expand = function(args) vim.fn["vsnip#anonymous"](args.body) end,
+            sources = {
+                cmdline = {},
 
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'vimtex' },
+
+                providers = {
+                    vimtex = {
+                        name = 'vimtex',
+                        module = 'blink.compat.source',
+                    },
+                },
             },
-            mapping = cmp.mapping.preset.insert({
-                ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-                ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
 
-                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        },
+        opts_extend = { 'sources.default' },
 
-                ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-
-                ["<C-e>"] = cmp.mapping.abort(),        -- close completion window
-
-                ["<C-l>"] = cmp.mapping({
-                    i = function(fallback)
-                        ---
-                        if cmp.visible() then
-                            cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
-                            return
-                        end
-
-                        if not cmp.confirm({ select = true }) then
-                            vim.api.nvim_feedkeys('\r', 'n', false)
-                            return
-                        end
-
-                        fallback()
-                    end,
-                }),
-            }),
-
-            { performance = { debounce = 200 } },
-            -- sources for autocompletion
-            sources = cmp.config.sources({
-                { name = "nvim_lsp" }, -- LSP
-                { name = 'vsnip' },
-                { name = 'vimtex' }
-            }),
-        })
-    end,
-    dependencies = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-vsnip',
-        'hrsh7th/vim-vsnip',
-        "micangl/cmp-vimtex",
-        "onsails/lspkind.nvim"
+        dependencies = { 'micangl/cmp-vimtex' }
     }
 }

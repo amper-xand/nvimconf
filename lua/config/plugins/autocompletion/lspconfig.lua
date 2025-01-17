@@ -1,5 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
+    dependencies = { 'saghen/blink.cmp' },
     init = function()
         -- Setup language servers.
         vim.lsp.handlers["textDocument/publishDiagnostics"] =
@@ -11,11 +12,10 @@ return {
             )
 
         local lspconfig = require('lspconfig')
-        -- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         local lsp_capabilities = vim.tbl_deep_extend("force",
             vim.lsp.protocol.make_client_capabilities(),
-            require('cmp_nvim_lsp').default_capabilities()
+            require('blink.cmp').get_lsp_capabilities()
         )
 
         lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
