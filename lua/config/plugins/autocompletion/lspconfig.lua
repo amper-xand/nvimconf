@@ -1,9 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
-    envent = "BuffPreRead",
     init = function()
         -- Setup language servers.
-
         vim.lsp.handlers["textDocument/publishDiagnostics"] =
             vim.lsp.with(
                 vim.lsp.diagnostic.on_publish_diagnostics,

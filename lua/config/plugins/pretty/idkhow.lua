@@ -5,6 +5,6 @@ return {
 
     init = function()
         vim.o.termguicolors = true
-        vim.cmd [[colorscheme razzmatazzdarker]]
+        vim.cmd [[colorscheme razzmatazz]]
     end,
 }

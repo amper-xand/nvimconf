@@ -1,6 +1,6 @@
 return {
     "lervag/vimtex",
-    --event = "BufEnter *.tex",
+    ft = "tex",
     config = function()
         vim.cmd 'filetype plugin indent on'
         -- using WSL2 for latex
