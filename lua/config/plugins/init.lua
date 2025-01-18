@@ -14,6 +14,7 @@ return {
     require "config.plugins.utils.gitgutter",
 
     require "config.plugins.other.vimtex",
+    require "config.plugins.other.typst",
     require "config.plugins.other.trouble",
 
     ---------------- Startup ----------------

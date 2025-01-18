@@ -26,6 +26,8 @@ vim.opt.pumwidth      = 12
 vim.g.netrw_banner    = 0
 vim.g.netrw_liststyle = 3
 
+vim.opt.wrap = false
+
 vim.opt.updatetime    = 100
 
 local on_yank = function() pcall(vim.highlight.on_yank) end

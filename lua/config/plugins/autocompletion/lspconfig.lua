@@ -28,6 +28,8 @@ return {
         lspconfig.texlab.setup { capabilities = lsp_capabilities }
         lspconfig.typos_lsp.setup { filetypes = "tex", init_options = { diagnosticSeverity = "Hint" } }
 
+        lspconfig.tinymist.setup { capabilities = lsp_capabilities }
+
         lspconfig.gopls.setup { capabilities = lsp_capabilities }
         lspconfig.html.setup { capabilities = lsp_capabilities }
         lspconfig.cssls.setup { capabilities = lsp_capabilities }
