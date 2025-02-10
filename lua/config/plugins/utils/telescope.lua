@@ -19,7 +19,7 @@ return {
         vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = "Telescope fuzzy find lsp references" })
         vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Telescope fuzzy find diagnostics" })
 
-        vim.keymap.set('n', '<leader>fGD', builtin.git_status, { desc = "Telescope fuzzy find with git status" })
+        vim.keymap.set('n', '<leader>fs', builtin.git_status, { desc = "Telescope fuzzy find with git status" })
     end,
     dependencies = { 'nvim-lua/plenary.nvim' }
 }

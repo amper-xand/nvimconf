@@ -20,12 +20,15 @@ return {
     },
 
     {
-        "OXY2DEV/markview.nvim",
-        lazy = true,
-        ft = "markdown", -- If you decide to lazy-load anyway
-
-        dependencies = {
-            "nvim-tree/nvim-web-devicons"
-        }
+        "nvim-tree/nvim-web-devicons",
+        init = function()
+            require 'nvim-web-devicons'.setup {
+                override_by_extension = {
+                    typ = {
+                        icon = '󰍘',
+                    }
+                }
+            }
+        end
     },
 }

@@ -26,7 +26,15 @@ return {
         lspconfig.cmake.setup { capabilities = lsp_capabilities }
 
         lspconfig.texlab.setup { capabilities = lsp_capabilities }
-        lspconfig.typos_lsp.setup { filetypes = "tex", init_options = { diagnosticSeverity = "Hint" } }
+        -- lspconfig.typos_lsp.setup { filetypes = "tex", init_options = { diagnosticSeverity = "Hint" } }
+        lspconfig.harper_ls.setup { filetypes = { 'tex', 'typst' },
+            settings = {
+                ["harper-ls"] = {
+                    userDictPath = vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
+                }
+            },
+
+        }
 
         lspconfig.tinymist.setup { capabilities = lsp_capabilities }
 
