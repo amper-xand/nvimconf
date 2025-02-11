@@ -1,7 +1,9 @@
 return {
-    require "config.plugins.autocompletion.cmp",
-    require "config.plugins.autocompletion.lspconfig",
-    require "config.plugins.autocompletion.lazydev",
+    require "config.plugins.dev.cmp",
+    require "config.plugins.dev.lspconfig",
+    require "config.plugins.dev.lazydev",
+    require "config.plugins.dev.gitgutter",
+    require "config.plugins.dev.trouble",
 
     require "config.plugins.pretty.lualine",
     require "config.plugins.pretty.idkhow",
@@ -11,11 +13,9 @@ return {
     require "config.plugins.utils.autopairs",
     require "config.plugins.utils.neotree",
     require "config.plugins.utils.telescope",
-    require "config.plugins.utils.gitgutter",
 
     require "config.plugins.other.vimtex",
     require "config.plugins.other.typst",
-    require "config.plugins.other.trouble",
 
     ---------------- Startup ----------------
     {
