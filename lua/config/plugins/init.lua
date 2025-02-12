@@ -4,6 +4,7 @@ return {
     require "config.plugins.dev.lazydev",
     require "config.plugins.dev.gitgutter",
     require "config.plugins.dev.trouble",
+    require "config.plugins.dev.dap",
 
     require "config.plugins.pretty.lualine",
     require "config.plugins.pretty.idkhow",
