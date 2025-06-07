@@ -1,3 +1,39 @@
+vim.g.mapleader = ','
+vim.g.maplocalleader = ','
+
+vim.keymap.set('n', '<leader>e', ':Explore<Esc>', { silent = true })
+
+-- escape terminal mode
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+
+-- clear search highlight
+vim.keymap.set('n', '<leader>cs', ':let @/ = ""<CR>', { silent = true })
+
+-- shortcuts for replacing in buffer
+vim.keymap.set('n', '<leader>sb', ':%s/')
+vim.keymap.set('n', '<leader>sl', ':s/')
+vim.keymap.set('v', '<leader>sb', ":s/", { noremap = true })
+
+-- create file under cursor
+vim.keymap.set('n', '<leader>gf', [[V:!xargs -I {} sh -c 'touch {}; echo {}'<CR>]], { silent = true })
+
+-- open config.
+vim.keymap.set('n', '<leader>se', function()
+        vim.cmd.tabedit(vim.fn.stdpath('config') .. '/lua/config/init.lua')
+        vim.cmd.tchdir(vim.fn.stdpath('config'))
+    end,
+    {
+        silent = true,
+    }
+)
+
+-- resource config files
+vim.api.nvim_create_user_command('ReloadConfig', function()
+    vim.cmd.source(vim.fn.stdpath('config') .. '/init.lua')
+end, {})
+
+--- Romanization
+
 -- set key maps to type in non latín scripts with latin keyboard
 -- example: privyet -> привет
 
@@ -7,7 +43,7 @@ local russian_alphabet = {
     { letter = "В", romanization = "V" },
     { letter = "Г", romanization = "G" },
     { letter = "Д", romanization = "D" },
-    { letter = "Е", romanization = "E" },
+    { letter = "Е", romanization = "Ye" },
     { letter = "Ё", romanization = "Yo" },
     { letter = "Ж", romanization = "Zh" },
     { letter = "З", romanization = "Z" },
@@ -32,7 +68,7 @@ local russian_alphabet = {
     { letter = "Ъ", romanization = "Ie" },
     { letter = "Ы", romanization = "Y'" },
     { letter = "Ь", romanization = "'" },
-    { letter = "Э", romanization = "Ye" },
+    { letter = "Э", romanization = "E" },
     { letter = "Ю", romanization = "Yu" },
     { letter = "Я", romanization = "Ya" },
     -- lowercase

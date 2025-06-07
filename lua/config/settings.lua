@@ -25,7 +25,7 @@ vim.opt.foldlevel      = 99
 vim.opt.pumheight      = 10
 vim.opt.pumwidth       = 12
 
-vim.g.netrw_banner     = 0
+-- vim.g.netrw_banner     = 0
 vim.g.netrw_liststyle  = 3
 
 vim.opt.wrap           = false
@@ -40,6 +40,4 @@ vim.api.nvim_set_hl(0, "LspReferenceText", { underline = true, bg = "BLACK" })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { underline = true, bg = "BLACK" })
 vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, bg = "BLACK" })
 
-if vim.loop.os_uname().sysname == "Windows_NT" then
-    vim.cmd [[set clipboard+=unnamedplus]]
-end
+vim.cmd [[set clipboard+=unnamedplus]]
