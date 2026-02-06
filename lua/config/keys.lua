@@ -32,6 +32,15 @@ vim.api.nvim_create_user_command('ReloadConfig', function()
     vim.cmd.source(vim.fn.stdpath('config') .. '/init.lua')
 end, {})
 
+vim.api.nvim_create_autocmd('InsertLeavePre', {
+    callback = function ()
+        if vim.snippet.active() then
+            vim.snippet.stop()
+        end
+    end
+}
+)
+
 --- Romanization
 
 -- set key maps to type in non latín scripts with latin keyboard

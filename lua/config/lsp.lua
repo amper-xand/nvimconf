@@ -17,7 +17,7 @@ local set_maps = function(ev)
     local opts = { buffer = ev.buf }
 
     -- autocompletion
-    -- vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, {autotrigger=false})
+    vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, {autotrigger=false})
 
     vim.keymap.set('n', '<space>f', function() lsp_buf.format { async = true } end, opts)
     vim.keymap.set('n', 'grs', lsp_buf.signature_help, opts)
@@ -47,30 +47,30 @@ local set_maps = function(ev)
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, opts)
 
-    if vim.lsp.get_client_by_id(ev.data.client_id):supports_method('textDocument/signatureHelp') then
-        vim.api.nvim_create_autocmd({ 'CursorHoldI' }, {
-            buffer = ev.buf,
-            group = lsp_autogroup,
-            callback = function()
-                vim.lsp.buf.signature_help({ max_height = 3, offset_y = 1000, relative = "editor", focusable = false })
-            end
-        })
-    end
+    -- if vim.lsp.get_client_by_id(ev.data.client_id):supports_method('textDocument/signatureHelp') then
+    --     vim.api.nvim_create_autocmd({ 'CursorHoldI' }, {
+    --         buffer = ev.buf,
+    --         group = lsp_autogroup,
+    --         callback = function()
+    --             vim.lsp.buf.signature_help({ max_height = 3, offset_y = 1000, relative = "editor", focusable = false })
+    --         end
+    --     })
+    -- end
 
     -- highlight occurrences under cursor
-    if vim.lsp.get_client_by_id(ev.data.client_id):supports_method('textDocument/documentHighlight') then
-        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-            buffer = ev.buf,
-            group = lsp_autogroup,
-            callback = vim.lsp.buf.document_highlight
-        })
-
-        vim.api.nvim_create_autocmd('CursorMoved', {
-            buffer = ev.buf,
-            group = lsp_autogroup,
-            callback = vim.lsp.buf.clear_references
-        })
-    end
+    -- if vim.lsp.get_client_by_id(ev.data.client_id):supports_method('textDocument/documentHighlight') then
+    --     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    --         buffer = ev.buf,
+    --         group = lsp_autogroup,
+    --         callback = vim.lsp.buf.document_highlight
+    --     })
+    --
+    --     vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI'}, {
+    --         buffer = ev.buf,
+    --         group = lsp_autogroup,
+    --         callback = vim.lsp.buf.clear_references
+    --     })
+    -- end
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
