@@ -10,8 +10,6 @@ return {
                 preset = 'default',
 
                 ['<C-l>'] = { 'accept', 'fallback' },
-                -- ['<C-k>'] = { 'select_prev', 'fallback' },
-                -- ['<C-j>'] = { 'select_next', 'fallback' },
             },
 
             cmdline = { enabled = false },
