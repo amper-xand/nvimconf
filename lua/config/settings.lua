@@ -35,9 +35,11 @@ vim.opt.updatetime     = 100
 local on_yank          = function() pcall(vim.highlight.on_yank) end
 vim.api.nvim_create_autocmd("TextYankPost", { callback = on_yank })
 
--- just in case I switch to a theme that does not support this
-vim.api.nvim_set_hl(0, "LspReferenceText", { underline = true, bg = "BLACK" })
-vim.api.nvim_set_hl(0, "LspReferenceRead", { underline = true, bg = "BLACK" })
-vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, bg = "BLACK" })
+vim.api.nvim_set_hl(0, "LspReferenceText", { underline = true,  reverse = true })
+vim.api.nvim_set_hl(0, "LspReferenceRead", { underline = true,  reverse = true })
+vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, reverse = true })
+
+vim.opt.bg = "dark"
+vim.cmd.colorscheme('retrobox')
 
 vim.cmd [[set clipboard+=unnamedplus]]
