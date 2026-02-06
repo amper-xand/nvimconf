@@ -7,6 +7,10 @@ return {
     },
 
     {
+        "sphamba/smear-cursor.nvim",
+        opts = {},
+    },
+    {
         'nvim-treesitter/nvim-treesitter-context',
     },
 
