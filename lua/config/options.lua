@@ -23,3 +23,5 @@ vim.opt.foldlevel      = 99
 
 vim.opt.pumheight      = 10
 vim.opt.pumwidth       = 12
+
+vim.opt.wrap           = false
