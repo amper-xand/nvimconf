@@ -127,7 +127,7 @@ vim.lsp.config.texlab = {
                 pdfDirectory = 'build',
                 auxDirectory = 'build',
                 args = { '-outdir=build', '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
-                onSave = true,
+                onSave = false,
                 forwardSearchAfter = true,
             },
             forwardSearch = {
@@ -183,11 +183,28 @@ vim.lsp.config.basedpyright = {
     }
 }
 
+vim.lsp.config.zls = {
+    cmd = { 'zls' },
+    filetypes = { 'zig' },
+}
+
+vim.lsp.config.gopls = {
+    cmd = { 'gopls' },
+    filetypes = { 'go' },
+}
+
+vim.lsp.config.rustanalyzer = {
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust', 'rs' },
+}
 
 vim.lsp.enable({
     'luals',
     'tinymist',
     'texlab',
-    'clangd',
+    -- 'clangd',
     'basedpyright',
+    'zls',
+    'gopls',
+    'rustanalyzer',
 })

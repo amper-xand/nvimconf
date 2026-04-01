@@ -33,13 +33,23 @@ vim.api.nvim_create_user_command('ReloadConfig', function()
 end, {})
 
 vim.api.nvim_create_autocmd('InsertLeavePre', {
-    callback = function ()
+    callback = function()
         if vim.snippet.active() then
             vim.snippet.stop()
         end
     end
 }
 )
+
+
+vim.api.nvim_create_autocmd("BufAdd", {
+    pattern = { "*.typ" },
+
+    callback = function(ev)
+        vim.keymap.set('n', '<leader>ll', [[!typst watch % --open=okular]],
+            { buffer = ev.buf })
+    end
+})
 
 --- Romanization
 

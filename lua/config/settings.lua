@@ -42,4 +42,4 @@ vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, reverse = true }
 vim.opt.bg = "dark"
 vim.cmd.colorscheme('retrobox')
 
-vim.cmd [[set clipboard+=unnamedplus]]
+vim.opt.clipboard:append {'unnamedplus'}
