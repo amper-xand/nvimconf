@@ -20,10 +20,10 @@ vim.opt.spelllang = 'en_us,es,ru'
 
 -- create file under cursor
 vim.keymap.set(
-	'n',
-	'<leader>gf',
-	[[V:!xargs -I {} sh -c 'touch {}; echo {}'<CR>]],
-	{ silent = true }
+    'n',
+    '<leader>gf',
+    [[V:!xargs -I {} sh -c 'touch {}; echo {}'<CR>]],
+    { silent = true }
 )
 
 -- open config.
