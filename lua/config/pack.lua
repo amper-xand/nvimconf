@@ -17,5 +17,11 @@ vim.schedule(function()
     require('ibl').setup()
     require('smear_cursor').setup()
 
+    -- git integration
+    vim.pack.add({
+        'https://github.com/tpope/vim-fugitive',
+        'https://github.com/lewis6991/gitsigns.nvim',
+    })
+
     require 'config.plugin.mason'
 end)
