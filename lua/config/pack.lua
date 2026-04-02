@@ -25,3 +25,10 @@ vim.schedule(function()
 
     require 'config.plugin.mason'
 end)
+
+vim.api.nvim_create_autocmd('InsertEnter', {
+    once = true,
+    callback = function()
+        require 'config.plugin.blink'
+    end
+})
