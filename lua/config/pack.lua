@@ -35,3 +35,5 @@ vim.api.nvim_create_autocmd('InsertEnter', {
         require("nvim-autopairs").setup()
     end
 })
+
+require 'config.plugin.vimtex'
