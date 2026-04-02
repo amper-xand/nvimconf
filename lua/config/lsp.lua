@@ -35,16 +35,6 @@ local setup_lsp_on_attach = function(ev)
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, opts)
 
-    if vim.lsp.get_client_by_id(ev.data.client_id):supports_method('textDocument/signatureHelp') then
-        vim.api.nvim_create_autocmd({ 'CursorHoldI' }, {
-            buffer = ev.buf,
-            group = lsp_autogroup,
-            callback = function()
-                vim.lsp.buf.signature_help({ max_height = 3, offset_y = 1000, relative = "editor", focusable = false })
-            end
-        })
-    end
-
     -- highlight occurrences under cursor
     if vim.lsp.get_client_by_id(ev.data.client_id):supports_method('textDocument/documentHighlight') then
         vim.opt.updatetime = 100
