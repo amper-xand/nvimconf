@@ -35,3 +35,22 @@ vim.keymap.set('n', '<leader>se', function()
         silent = true,
     }
 )
+
+-- start typst compilation and open output
+vim.api.nvim_create_autocmd('BufAdd', {
+    pattern = { '*.typ' },
+
+    callback = function(ev)
+        vim.keymap.set('n', '<leader>ll', [[!typst watch % --open=okular]],
+            { buffer = ev.buf })
+    end
+})
+
+-- stop current snippet when leaving insert mode
+vim.api.nvim_create_autocmd('InsertLeavePre', {
+    callback = function()
+        if vim.snippet.active() then
+            vim.snippet.stop()
+        end
+    end
+})
