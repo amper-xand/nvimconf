@@ -83,7 +83,7 @@ vim.lsp.config.luals = {
 
 vim.lsp.config.tinymist = {
     cmd = { 'tinymist' },
-    filetypes = { 'typst' },
+    filetypes = { 'typst', 'typ' },
     root_markers = { '.git' },
     settings = {
         formatterMode = 'typstyle',
@@ -139,7 +139,7 @@ vim.lsp.config.clangd = {
 }
 
 vim.lsp.config.basedpyright = {
-    cmd = { 'basedpyright-langserver', '--stdio' },
+    cmd = { vim.fn.stdpath('data') .. '/mason/bin/basedpyright-langserver', '--stdio' },
     filetypes = { 'python' },
     root_markers = { '.git', '.venv' },
     settings = {
@@ -162,10 +162,22 @@ vim.lsp.config.basedpyright = {
     }
 }
 
+vim.lsp.config.rustanalyzer = {
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust', 'rs' },
+}
+
+vim.lsp.config.Rlang = {
+    cmd = { 'R', '--no-echo', '-e', 'languageserver::run()' },
+    filetypes = { 'r', 'rmd' },
+}
+
 vim.lsp.enable({
     'luals',
     'tinymist',
     'texlab',
     'clangd',
     'basedpyright',
+    'rustanalyzer',
+    'Rlang',
 })
