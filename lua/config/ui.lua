@@ -7,3 +7,5 @@ vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, reverse = true }
 
 vim.opt.bg = "dark"
 vim.cmd.colorscheme('catppuccin')
+
+vim.api.nvim_set_hl(0, "Normal", { ctermbg = "NONE" })
